@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Child :abc="testvalue"></Child>
     <Upload
       ref="upload"
       :show-upload-list="false"
@@ -22,13 +21,13 @@
       </div>
     </Upload>
     <div class="demo-upload-list" v-for="(item,index) in uploadList" :key="index+'a'">
-      <div>{{item.uid}}</div>
       <img :src="item.url">
       <div class="demo-upload-list-cover">
         <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
         <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
       </div>
     </div>
+    <!-- <p v-for="item in defaultList1">{{item}}</p> -->
     <Modal title="View Image" v-model="visible">
       <img
         :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'"
@@ -58,9 +57,10 @@ export default {
             "https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar"
         }
       ],
+      defaultList1: [1],
       imgName: "",
       visible: false,
-      uploadList: []
+      uploadList: [1]
     };
   },
   methods: {
@@ -104,6 +104,9 @@ export default {
   },
   mounted() {
     this.uploadList = this.$refs.upload.fileList;
+    //this.defaultList=[]
+    this.defaultList1 = [13];
+    //this.$forceUpdate();
   }
 };
 </script>
